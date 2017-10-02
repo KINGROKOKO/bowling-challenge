@@ -19,8 +19,21 @@ describe('Bowling', function(){
     it('in round 1', function(){
       // game.addFrame(1);
       game.roundScore(10);
-      expect(game.currentFrame()).toEqual({frame: 1, round: 1, score: 10});
-      expect(game.isStrike()).toEqual(true);
+      expect(game.frames[0]).toEqual({frame: 1, round: 1, score: 10});
+      // expect(game.isStrike()).toEqual(true);
+    });
+  });
+
+  describe('Score a STRIKE', function(){
+
+    it('new frame starts', function(){
+      // game.addFrame(1);
+      game.roundScore(10);
+      // console.log(game.currentFrame());
+      // console.log(game.frames);
+      // console.log(game.isStrike())
+      //   console.log(game.currentFrame())
+      expect(game.currentFrame()).toEqual({frame: 2, round: 1, score: null});
     });
   });
 
@@ -47,21 +60,17 @@ describe('Bowling', function(){
 
     it('is a SPARE', function(){
       // game.addFrame(1);
+      // console.log(game.frames);
       game.roundScore(5);
+      // console.log(game.frames);
+      // console.log(game.currentFrame());
+      // console.log(game.currentFrame().score)
       game.roundScore(5);
-      expect(game.currentFrame()).toEqual({frame: 1, round: 2, score: 10});
-      expect(game.isSpare()).toEqual(true);
-    });
-  });
-
-  describe('Check if score', function(){
-
-    it('is a SPARE', function(){
-      // game.addFrame(1);
-      game.roundScore(5);
-      game.roundScore(5);
-      expect(game.currentFrame()).toEqual({frame: 1, round: 2, score: 10});
-      expect(game.isSpare()).toEqual(true);
+      // console.log(game.frames);
+      //
+      // console.log(game.spare)
+      expect(game.frames[0]).toEqual({frame: 1, round: 2, score: 10});
+      expect(game.spare).toEqual(true);
     });
   });
 
@@ -75,14 +84,15 @@ describe('Bowling', function(){
       //   game.roundScore(5);
       //   i++
       // };
-      console.log(game.currentFrame())
       game.roundScore(5);
-      console.log(game.currentFrame())
-      game.roundScore(5);
-      console.log(game.currentFrame())
-      game.roundScore(5);
-      console.log(game.currentFrame())
       console.log(game.frames)
+      game.roundScore(5);
+      console.log(game.frames)
+      game.roundScore(5);
+      console.log(game.frames)
+
+
+
       expect(game.currentFrame()).toEqual({frame: 2, round: 1, score: 5});
       expect(game.isSpare()).toEqual(false);
     });
